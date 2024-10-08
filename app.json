@@ -1,6 +1,8 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/rankingList/rankingList",
+    "pages/xiaohongshuNotes/xiaohongshuNotes"
   ],
   "window": {
     "navigationBarTextStyle": "black",

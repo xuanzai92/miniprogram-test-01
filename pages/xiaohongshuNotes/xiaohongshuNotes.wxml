@@ -1,0 +1,31 @@
+<navigation-bar title="小红书笔记" back="{{true}}" color="black" background="#FFF" bindback="goBack" bindhome="goHome">
+  <view slot="left">
+    <view class="nav-buttons">
+      <view class="nav-button" bindtap="goBack">返回</view>
+      <view class="nav-button" bindtap="goHome">首页</view>
+    </view>
+  </view>
+</navigation-bar>
+
+<view class="container">
+  <view class="filter-bar">
+    <view class="filter-item {{currentFilter === 'comprehensive' ? 'active' : ''}}" bindtap="changeFilter" data-filter="comprehensive">综合</view>
+    <view class="filter-item {{currentFilter === 'latest' ? 'active' : ''}}" bindtap="changeFilter" data-filter="latest">最新</view>
+  </view>
+
+  <scroll-view scroll-y="true" class="notes-list">
+    <view class="notes-grid">
+      <view class="note-item" wx:for="{{notesList}}" wx:key="index">
+        <image class="note-image" src="{{item.image}}" mode="aspectFill"></image>
+        <view class="note-info">
+          <text class="note-title">{{item.title}}</text>
+          <text class="note-description">{{item.description}}</text>
+          <view class="note-footer">
+            <text class="note-author">{{item.author}}</text>
+            <text class="note-likes">{{item.likes}} 赞</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

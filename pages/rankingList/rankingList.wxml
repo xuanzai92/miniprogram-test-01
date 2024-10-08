@@ -1,0 +1,71 @@
+<navigation-bar title="榜单查询" back="{{true}}" color="black" background="#FFF" bindback="goBack" bindhome="goHome">
+  <view slot="left">
+    <view class="nav-buttons">
+      <view class="nav-button" bindtap="goBack">返回</view>
+      <view class="nav-button" bindtap="goHome">首页</view>
+    </view>
+  </view>
+</navigation-bar>
+
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <view class="section">
+      <view class="section-title">平台选择</view>
+      <radio-group bindchange="platformChange">
+        <radio value="search" checked="{{platform === 'search'}}">搜索引擎</radio>
+        <radio value="social" checked="{{platform === 'social'}}">自媒体平台</radio>
+      </radio-group>
+    </view>
+
+    <view class="section" wx:if="{{platform === 'search'}}">
+      <view class="section-title">搜索引擎</view>
+      <radio-group bindchange="searchEngineChange">
+        <radio value="google">谷歌</radio>
+        <radio value="baidu">百度</radio>
+        <radio value="360">360</radio>
+      </radio-group>
+    </view>
+
+    <view class="section" wx:if="{{platform === 'social'}}">
+      <view class="section-title">自媒体平台</view>
+      <radio-group bindchange="socialPlatformChange">
+        <radio value="douyin">抖音</radio>
+        <radio value="xiaohongshu">小红书</radio>
+      </radio-group>
+    </view>
+
+    <view class="section">
+      <view class="section-title">行业分类</view>
+      <picker bindchange="industryChange" value="{{industryIndex}}" range="{{industries}}">
+        <view class="picker">
+          当前选择：{{industries[industryIndex]}}
+        </view>
+      </picker>
+    </view>
+
+    <view class="section">
+      <view class="section-title">日期筛选</view>
+      <radio-group bindchange="dateFilterChange">
+        <radio value="7">近7天</radio>
+        <radio value="30">近30天</radio>
+      </radio-group>
+    </view>
+
+    <view class="section">
+      <view class="section-title">榜单范围</view>
+      <radio-group bindchange="rankingRangeChange">
+        <radio value="10">Top 10</radio>
+        <radio value="50">Top 50</radio>
+        <radio value="100">Top 100</radio>
+      </radio-group>
+    </view>
+
+    <button bindtap="searchRanking">查询榜单</button>
+
+    <view class="result-list" wx:if="{{rankingList.length > 0}}">
+      <view class="result-item" wx:for="{{rankingList}}" wx:key="index">
+        <text>{{index + 1}}. {{item}}</text>
+      </view>
+    </view>
+  </view>
+</scroll-view>

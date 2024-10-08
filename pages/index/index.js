@@ -1,2 +1,13 @@
 // index.js
-Page({})
+Page({
+  navigateToRankingList() {
+    wx.navigateTo({
+      url: '/pages/rankingList/rankingList'
+    })
+  },
+  navigateToXiaohongshuNotes() {
+    wx.navigateTo({
+      url: '/pages/xiaohongshuNotes/xiaohongshuNotes'
+    })
+  }
+})
